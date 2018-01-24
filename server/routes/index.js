@@ -4,16 +4,20 @@ const productsRouter = require('./products');
 const customersRouter = require('./customers');
 const ordersRouter = require('./orders');
 
-router.get('/categories', categoriesRouter)
-  .post('/categories', categoriesRouter);
+router.route('/categories')
+  .get(categoriesRouter)
+  .post(categoriesRouter);
 
-router.get('/products', productsRouter)
-  .post('/products', productsRouter);
+router.route('/products')
+  .get(productsRouter)
+  .post(productsRouter);
 
-router.get('/customers', customersRouter)
-  .post('/customers', customersRouter);
+router.route('/customers')
+  .get(customersRouter)
+  .post(customersRouter);
 
-router.get('/orders', ordersRouter)
-  .post('/orders', ordersRouter);
+router.route('/orders')
+  .get(ordersRouter)
+  .post(ordersRouter);
 
 module.exports = router;
