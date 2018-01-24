@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "order_id": 2,
+    "product_id": 2,
+    "quantity": 5.00,
+    "unit_price": 12.00,
+    "unit": "gal",
+    "currency": "USD"
+  },
+  {
+    "id": 2,
+    "order_id": 3,
+    "product_id": 2,
+    "quantity": 5.00,
+    "unit_price": 51.00,
+    "unit": "gal",
+    "currency": "USD"
+  },
+  {
+    "id": 3,
+    "order_id": 2,
+    "product_id": 2,
+    "quantity": 5.00,
+    "unit_price": 22.00,
+    "unit": "gal",
+    "currency": "USD"
+    },
+  {
+    "id": 4,
+    "order_id": 4,
+    "product_id": 2,
+    "quantity": 5.00,
+    "unit_price": 5.00,
+    "unit": "gal",
+    "currency": "USD"
+  }
+]
