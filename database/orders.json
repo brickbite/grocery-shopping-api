@@ -4,27 +4,31 @@
     "customer_id": 2,
     "datetime_ordered": "2018.02.01",
     "total_amount": 12.00,
-    "currency": "USD"
+    "currency": "USD",
+    "status": "DELIVERED"
   },
   {
     "id": 2,
     "customer_id": 3,
     "datetime_ordered": "2018.02.01",
     "total_amount": 51.00,
-    "currency": "USD"
+    "currency": "USD",
+    "status": "WAITING_FOR_PICKUP"
   },
   {
     "id": 3,
     "customer_id": 2,
     "datetime_ordered": "2018.02.01",
     "total_amount": 22.00,
-    "currency": "USD"
+    "currency": "USD",
+    "status": "ON_ITS_WAY"
     },
   {
     "id": 4,
     "customer_id": 4,
     "datetime_ordered": "2018.02.01",
     "total_amount": 5.00,
-    "currency": "USD"
+    "currency": "USD",
+    "status": "DELIVERED"
   }
 ]
