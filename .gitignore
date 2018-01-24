@@ -5,3 +5,4 @@
 .Trashes
 yarn.lock
 /node_modules
+.env
