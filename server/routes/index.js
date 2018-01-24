@@ -8,6 +8,13 @@ router.route('/categories')
   .get(categoriesRouter)
   .post(categoriesRouter);
 
+// ============
+// TODO: products based on category id
+// ============
+// router.route('/products/:category_id')
+//   .get(productsRouter)
+//   .post(productsRouter);
+
 router.route('/products')
   .get(productsRouter)
   .post(productsRouter);
@@ -15,6 +22,20 @@ router.route('/products')
 router.route('/customers')
   .get(customersRouter)
   .post(customersRouter);
+
+// ============
+// TODO: orders based on customer id
+// ============
+// router.route('/orders/:customer_id')
+//   .get(ordersRouter)
+//   .post(ordersRouter);
+
+// ============
+// TODO: order summary based on time/date range
+// ============
+// router.route('/orders/summary/:timeinterval/:startdate/:enddate')
+//   .get(ordersRouter)
+//   .post(ordersRouter);
 
 router.route('/orders')
   .get(ordersRouter)
