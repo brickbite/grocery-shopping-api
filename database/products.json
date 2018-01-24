@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "banana",
+    "unit": "lb",
+    "unit_price": "0.80"
+  },
+  {
+    "id": 2,
+    "name": "milk",
+    "unit": "gal",
+    "unit_price": "3.99"
+  },
+  {
+    "id": 3,
+    "name": "roses",
+    "unit": "bundle",
+    "unit_price": "5.00"
+  },
+  {
+    "id": 4,
+    "name": "soap",
+    "unit": "box",
+    "unit_price": "1.00"
+  }
+]
