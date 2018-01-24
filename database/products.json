@@ -3,24 +3,28 @@
     "id": 1,
     "name": "banana",
     "unit": "lb",
-    "unit_price": "0.80"
+    "unit_price": 0.80,
+    "currency": "USD"
   },
   {
     "id": 2,
     "name": "milk",
     "unit": "gal",
-    "unit_price": "3.99"
+    "unit_price": 3.99,
+    "currency": "USD"
   },
   {
     "id": 3,
     "name": "roses",
     "unit": "bundle",
-    "unit_price": "5.00"
+    "unit_price": 5.00,
+    "currency": "USD"
   },
   {
     "id": 4,
     "name": "soap",
     "unit": "box",
-    "unit_price": "1.00"
+    "unit_price": 1.00,
+    "currency": "USD"
   }
 ]
