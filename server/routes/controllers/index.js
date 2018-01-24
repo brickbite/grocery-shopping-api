@@ -8,4 +8,4 @@ module.exports = {
   products: products,
   customers: customers,
   orders: orders
-}
+};
