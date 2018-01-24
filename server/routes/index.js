@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const controllers = require('./controllers');
+const categoriesRouter = require('./categories');
 
-router.get('/something', controllers.get)
-  .post('/something', controllers.post);
+router.get('/categories', categoriesRouter)
+  .post('/categories', categoriesRouter);
 
 module.exports = router;
