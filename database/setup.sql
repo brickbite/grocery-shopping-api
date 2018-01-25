@@ -48,8 +48,8 @@ CREATE TABLE products_categories (
   id_categories INTEGER
 );
 
-ALTER TABLE orders ADD FOREIGN KEY (id_customers) REFERENCES customers (id);
-ALTER TABLE orders_products ADD FOREIGN KEY (id_products) REFERENCES products (id);
-ALTER TABLE orders_products ADD FOREIGN KEY (id_orders) REFERENCES orders (id);
-ALTER TABLE products_categories ADD FOREIGN KEY (id_products) REFERENCES products (id);
-ALTER TABLE products_categories ADD FOREIGN KEY (id_categories) REFERENCES categories (id);
+ALTER TABLE orders ADD FOREIGN KEY (id_customers) REFERENCES customers (id) ON DELETE CASCADE;
+ALTER TABLE orders_products ADD FOREIGN KEY (id_products) REFERENCES products (id) ON DELETE CASCADE;
+ALTER TABLE orders_products ADD FOREIGN KEY (id_orders) REFERENCES orders (id) ON DELETE CASCADE;
+ALTER TABLE products_categories ADD FOREIGN KEY (id_products) REFERENCES products (id) ON DELETE CASCADE;
+ALTER TABLE products_categories ADD FOREIGN KEY (id_categories) REFERENCES categories (id) ON DELETE CASCADE;
