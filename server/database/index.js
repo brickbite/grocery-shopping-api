@@ -35,9 +35,27 @@ module.exports = {
 
   },
   customers: {
+    getCustomerOrders: (cb, id) => {
+      const queryString = `SELECT * FROM orders WHERE id_customers = ${id}`;
+      console.log(queryString);
 
+      client.query(queryString, (err, res) => {
+        console.log(err ? err.stack : res);
+        cb(err, res);
+      });
+
+    }
   },
   orders: {
+    getOrdersByTime: (cb, id) => {
+      // TODO: const queryString = `SELECT * FROM orders WHERE id_customers = ${id}`; 
+      console.log(queryString);
 
+      client.query(queryString, (err, res) => {
+        console.log(err ? err.stack : res);
+        cb(err, res);
+      });
+
+    }
   }
 };
