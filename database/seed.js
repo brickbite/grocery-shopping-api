@@ -1,7 +1,6 @@
-require('dotenv').config()
+require('dotenv').config();
 const path = require('path');
-const dataDirectory = path.join(__dirname, './data/csv')
-console.log(dataDirectory);
+const dataDirectory = path.join(__dirname, './data/csv');
 
 const { Client } = require('pg');
 const client = new Client({
