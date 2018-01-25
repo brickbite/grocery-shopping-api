@@ -8,26 +8,27 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
-  console.log(err ? err.stack : res.rows[0].message) // Hello World!
-  client.end();
-});
+// client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
+//   console.log(err ? err.stack : res.rows[0].message) // Hello World!
+//   client.end();
+// });
 
 module.exports = {
   categories: {
-    getAll: (cb) => {
-      client.query(`SELECT * FROM categories`, (err, res) => {
-        console.log(err ? err.stack : res);
-        cb(res);
-        client.end();
-      });
-    },
-    getName: (cb, name) => {
-      client.query(`SELECT * FROM categories WHERE category_name=${name}`, (err, res) => {
-        console.log(err ? err.stack : res);
-        cb(res);
-        client.end();
-      });
+    get: (cb, name = null) => {
+      const queryString = name === null ? `SELECT * FROM categories` : `SELECT * FROM categories WHERE id = ${name}`;
+      console.log(queryString);
+      // client.connect((err) => {
+        client.query(queryString, (err, res) => {
+          console.log(err ? err.stack : res);
+          cb(err, res);
+          // client.end();
+        });
+
+        // query.on('end', () => {
+
+        // });
+      // });
     }
   },
   products: {
