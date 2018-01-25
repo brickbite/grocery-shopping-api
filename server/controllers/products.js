@@ -1,3 +1,5 @@
+const db = require('../database');
+
 module.exports = {
   get: (req, res) => {
     res.send('hello /products get');
