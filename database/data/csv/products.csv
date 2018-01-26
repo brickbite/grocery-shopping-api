@@ -1,6 +1,7 @@
-1,banana,lb,0.80,USD
-2,milk,gal,3.99,USD
-3,roses,bundle,5.00,USD
-4,soap,box,1.00,USD
-5,celery,bundle,2.00,USD
-6,honey_(8_oz),jar,5.99,USD
+1,banana,USD,0.80,lb
+2,milk,USD,3.99,gal
+3,roses,USD,5.00,bundle
+4,soap,USD,1.00,box
+5,celery,USD,2.00,bundle
+6,honey_(8_oz),USD,5.99,jar
+7,cereal,USD,3.99,box
