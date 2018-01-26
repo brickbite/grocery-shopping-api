@@ -72,11 +72,12 @@ module.exports = {
           ON products.id = products_categories.id_products
         LEFT OUTER JOIN categories
           ON categories.id = products_categories.id_categories
+        ${id === null ? `` : `WHERE orders.id_customers = ${id}`}
         GROUP BY orders.id_customers, customers.first_name,
           products_categories.id_categories, categories.category_name
         ORDER BY orders.id_customers;
-        ${id === null ? `` : `WHERE orders.id_customers = ${id}`};
         `;
+      console.log(queryString);
 
       client.query(queryString, (err, res) => {
         // console.log(err ? err.stack : res);
