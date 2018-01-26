@@ -21,7 +21,7 @@
 
 | Option | Default Value | Description |
 | ------ | ----------- | ----------- |
-| ```customer_id=``` | null | number. used to filter by a particular customer_id |
+| ```customer_id=``` | null | number. used to filter by a particular customer_id. leaving as null will retrieve data for all customers |
 
 __Example Request:__
  ```GET /api/v0/customers/orders?customer_id=2```
@@ -184,7 +184,7 @@ Note: ```"total_amount"``` doesn't add up in this example. (mock data is used)
 
 | Option | Default Value | Description |
 | ------ | ----------- | ----------- |
-| ```customer_id=``` | null | number. used to filter by a particular customer_id |
+| ```customer_id=``` | null | number. used to filter by a particular customer_id. leaving as null will retrieve data for all customers |
 
 __Example Request:__
  ```GET /api/v0/customers/categories?customer_id=2```
