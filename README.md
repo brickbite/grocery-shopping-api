@@ -15,7 +15,7 @@
 
 ## Usage:
  - Requests should start with ```/api/v0```
- - __Report of orders with breakdown of products:__
+ ### Report of orders with breakdown of products:
  
  ```GET /api/v0/customers/orders```. Query strings are used to configure the output. Acceptable query strings: 
 
@@ -26,7 +26,7 @@
 __Example:__
  ```GET /api/v0/customers/orders?customer_id=1```
 
- - __Report of orders grouped by category:__
+ ### Report of orders grouped by category:
  
  ```GET /api/v0/customers/categories```. Query strings are used to configure the output. Acceptable query strings: 
 
@@ -37,7 +37,7 @@ __Example:__
 __Example:__
  ```GET /api/v0/customers/categories?customer_id=1```
 
- - __Report of all orders within a date range, by day, week, or month:__
+ ### Report of all orders within a date range, by day, week, or month:
  
  ```GET /api/v0/orders```. Query strings are used to configure the output. Acceptable query strings: 
 
