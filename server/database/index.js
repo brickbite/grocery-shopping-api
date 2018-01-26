@@ -8,27 +8,16 @@ const client = new Client({
 
 client.connect();
 
-// client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
-//   console.log(err ? err.stack : res.rows[0].message) // Hello World!
-//   client.end();
-// });
-
 module.exports = {
   categories: {
     get: (cb, name = null) => {
       const queryString = name === null ? `SELECT * FROM categories` : `SELECT * FROM categories WHERE id = ${name}`;
       console.log(queryString);
-      // client.connect((err) => {
         client.query(queryString, (err, res) => {
-          console.log(err ? err.stack : res);
-          cb(err, res);
-          // client.end();
+          // console.log(err ? err.stack : res);
+          cb(err, res.rows);
         });
 
-        // query.on('end', () => {
-
-        // });
-      // });
     }
   },
   products: {
@@ -38,6 +27,7 @@ module.exports = {
     getCustomerOrders: (cb, id = null) => {
       const queryString = `
         SELECT
+          orders.id_customers,
           orders.id,
           orders.time_ordered,
           orders.total_amount,
@@ -55,12 +45,13 @@ module.exports = {
           ON orders_products.id_orders = orders.id
         LEFT OUTER JOIN products
           ON products.id = orders_products.id_products
-        ${id === null ? `` : `WHERE orders.id_customers = ${id}`};
+        ${id === null ? `` : `WHERE orders.id_customers = ${id}`}
+        ORDER BY orders.id_customers;
         `;
 
       client.query(queryString, (err, res) => {
-        console.log(err ? err.stack : res);
-        cb(err, res);
+        // console.log(err ? err.stack : res);
+        cb(err, res.rows);
       });
 
     },
@@ -88,8 +79,8 @@ module.exports = {
         `;
 
       client.query(queryString, (err, res) => {
-        console.log(err ? err.stack : res);
-        cb(err, res);
+        // console.log(err ? err.stack : res);
+        cb(err, res.rows);
       });
 
     }
@@ -124,8 +115,8 @@ module.exports = {
       console.log(queryString);
 
       client.query(queryString, (err, res) => {
-        console.log(err ? err.stack : res);
-        cb(err, res);
+        // console.log(err ? err.stack : res);
+        cb(err, res.rows);
       });
 
     }
