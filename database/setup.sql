@@ -8,9 +8,9 @@ DROP TABLE products_categories CASCADE;
 CREATE TABLE products (
   id BIGSERIAL PRIMARY KEY,
   product_name TEXT NOT NULL,
-  unit_type TEXT NOT NULL,
+  currency VARCHAR(10) NOT NULL,
   unit_price REAL NOT NULL,
-  currency VARCHAR(10) NOT NULL
+  unit_measure TEXT NOT NULL
 );
 
 CREATE TABLE categories (
@@ -34,12 +34,12 @@ CREATE TABLE orders (
 
 CREATE TABLE orders_products (
   id BIGSERIAL PRIMARY KEY,
-  id_products BIGSERIAL NOT NULL,
   id_orders BIGSERIAL NOT NULL,
-  quantity REAL NOT NULL,
+  id_products BIGSERIAL NOT NULL,
+  order_quantity REAL NOT NULL,
+  currency VARCHAR(10) NOT NULL,
   unit_price REAL NOT NULL,
-  unit_type TEXT NOT NULL,
-  currency VARCHAR(10) NOT NULL
+  unit_measure TEXT NOT NULL
 );
 
 CREATE TABLE products_categories (
