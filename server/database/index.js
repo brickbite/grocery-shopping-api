@@ -87,7 +87,7 @@ module.exports = {
   },
   orders: {
     getOrdersByTime: (cb, start = '-infinity', end = 'infinity', timePeriod = 'week', csvOutput = false) => {
-      timeOptions = {
+      const timeOptions = {
         day: 'YYYY MM DD',
         week: 'YYYY WW',
         month: 'YYYY MM'
@@ -103,7 +103,7 @@ module.exports = {
           ON orders.id = orders_products.id_orders
         LEFT OUTER JOIN products
           ON orders_products.id_products = products.id
-        WHERE orders.time_ordered BETWEEN '${start}' AND '${end}'
+        WHERE orders.time_ordered BETWEEN ${start} AND ${end}
         GROUP BY TO_CHAR(time_ordered, '${timeOptions[timePeriod]}'),
           products.product_name
         ORDER BY TO_CHAR(time_ordered, '${timeOptions[timePeriod]}');
