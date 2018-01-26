@@ -11,7 +11,7 @@ client.connect();
 module.exports = {
   categories: {
     get: (cb, name = null) => {
-      const queryString = name === null ? `SELECT * FROM categories` : `SELECT * FROM categories WHERE id = ${name}`;
+      let queryString = name === null ? `SELECT * FROM categories` : `SELECT * FROM categories WHERE id = ${name}`;
       console.log(queryString);
         client.query(queryString, (err, res) => {
           // console.log(err ? err.stack : res);
@@ -25,7 +25,7 @@ module.exports = {
   },
   customers: {
     getCustomerOrders: (cb, id = null) => {
-      const queryString = `
+      let queryString = `
         SELECT
           orders.id_customers,
           orders.id,
@@ -56,7 +56,7 @@ module.exports = {
 
     },
     getCustomerOrdersByCategory: (cb, id = null) => {
-      const queryString = `
+      let queryString = `
         SELECT
           orders.id_customers, customers.first_name,
           products_categories.id_categories, categories.category_name,
@@ -87,14 +87,14 @@ module.exports = {
     }
   },
   orders: {
-    getOrdersByTime: (cb, start = '-infinity', end = 'infinity', timePeriod = 'week', csvOutput = false) => {
+    getOrdersByTime: (cb, start = `'-infinity'`, end = `'infinity'`, timePeriod = 'week', csvOutput = false) => {
       const timeOptions = {
         day: 'YYYY MM DD',
         week: 'YYYY WW',
         month: 'YYYY MM'
       };
 
-      const queryString = `
+      let queryString = `
         SELECT
           TO_CHAR(orders.time_ordered, '${timeOptions[timePeriod]}'),
           products.product_name,
@@ -111,7 +111,7 @@ module.exports = {
         `;
 
       console.log(`dirname is: ${__dirname}`);
-      // csvOutput ? queryString = `COPY (${queryString}) TO '${__dirname}/report.csv' CSV` : null;
+      csvOutput ? queryString = `COPY (${queryString}) TO '${__dirname}/report.csv' CSV` : null;
 
       console.log(queryString);
 
