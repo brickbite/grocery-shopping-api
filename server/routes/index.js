@@ -35,14 +35,7 @@ router.route('/customers/:nextroute')
 //   .get(ordersRouter)
 //   .post(ordersRouter);
 
-// ============
-// TODO: order summary based on time/date range
-// ============
-// router.route('/orders/summary/:timeinterval/:startdate/:enddate')
-//   .get(ordersRouter)
-//   .post(ordersRouter);
-
-router.route('/orders/:nextroute')
+router.route('/orders')
   .get(ordersRouter)
   .post(ordersRouter);
 
