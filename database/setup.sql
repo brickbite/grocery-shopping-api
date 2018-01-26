@@ -6,46 +6,46 @@ DROP TABLE orders_products CASCADE;
 DROP TABLE products_categories CASCADE;
 
 CREATE TABLE products (
-  id INTEGER PRIMARY KEY,
-  product_name TEXT,
-  unit_type TEXT,
-  unit_price REAL,
-  currency VARCHAR(10)
+  id BIGSERIAL PRIMARY KEY,
+  product_name TEXT NOT NULL,
+  unit_type TEXT NOT NULL,
+  unit_price REAL NOT NULL,
+  currency VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE categories (
-  id INTEGER PRIMARY KEY,
-  category_name TEXT
+  id BIGSERIAL PRIMARY KEY,
+  category_name TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE customers (
-  id INTEGER PRIMARY KEY,
-  first_name TEXT
+  id BIGSERIAL PRIMARY KEY,
+  first_name TEXT NOT NULL
 );
 
 CREATE TABLE orders (
-  id INTEGER PRIMARY KEY,
-  id_customers INTEGER,
-  time_ordered TIMESTAMPTZ,
-  total_amount REAL,
-  currency VARCHAR(10),
-  order_status TEXT
+  id BIGSERIAL PRIMARY KEY,
+  id_customers BIGSERIAL NOT NULL,
+  time_ordered TIMESTAMPTZ NOT NULL,
+  total_amount REAL NOT NULL,
+  currency VARCHAR(10) NOT NULL,
+  order_status TEXT NOT NULL
 );
 
 CREATE TABLE orders_products (
-  id INTEGER PRIMARY KEY,
-  id_products INTEGER,
-  id_orders INTEGER,
-  quantity REAL,
-  unit_price REAL,
-  unit_type TEXT,
-  currency VARCHAR(10)
+  id BIGSERIAL PRIMARY KEY,
+  id_products BIGSERIAL NOT NULL,
+  id_orders BIGSERIAL NOT NULL,
+  quantity REAL NOT NULL,
+  unit_price REAL NOT NULL,
+  unit_type TEXT NOT NULL,
+  currency VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE products_categories (
-  id INTEGER PRIMARY KEY,
-  id_products INTEGER,
-  id_categories INTEGER
+  id BIGSERIAL PRIMARY KEY,
+  id_products BIGSERIAL NOT NULL,
+  id_categories BIGSERIAL NOT NULL
 );
 
 ALTER TABLE orders ADD FOREIGN KEY (id_customers) REFERENCES customers (id) ON DELETE CASCADE;
