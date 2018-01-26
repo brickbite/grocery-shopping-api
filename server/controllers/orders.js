@@ -3,9 +3,9 @@ const db = require('../database');
 module.exports = {
   get: (req, res) => {
     console.log('hello /orders get');
-    db.orders.get((err, queryResult) => {
+    db.orders.getOrdersByTime((err, queryResult) => {
       err ? res.send(err) : res.send(queryResult);
-    }, req.query.order_id);
+    }, req.query.start, req.query.end, req.query.period, req.query.output);
   },
   post: (req, res) => {
     res.send('hello /orders post');
