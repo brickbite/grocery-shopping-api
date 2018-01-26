@@ -17,13 +17,23 @@
  - Requests should start with ```/api/v0```
  - Report of orders with breakdown of products: ```GET /api/v0/customers/orders```. Query strings are used to configure the output. Acceptable query strings: 
  ```customer_id=``` (used to filter by a particular customer_id. default: null)
+ 
  - Report of orders grouped by category: ```GET /api/v0/customers/categories```. Query strings are used to configure the output. Acceptable query strings: 
  ```customer_id=``` (used to filter by a particular customer_id. default: null)
- - Report of all orders within a date range, by day, week, or month: ```GET /api/v0/orders```. Query strings are used to configure the output. Acceptable query strings: 
- ```start=``` (as PostgreSQL datetimetz. default: '-infinity')
- ```end=``` (as PostgreSQL datetimetz. default: 'infinity')
- ```period=day / week / month``` (as a string. default: week)
- ```output=true``` (if true, will write results of the query to report.csv (refer to example.report.csv file) and the server will respond with empty rows default: false)
+
+ - Report of all orders within a date range, by day, week, or month:
+ 
+ ```GET /api/v0/orders```. Query strings are used to configure the output. Acceptable query strings: 
+
+| Option | Default | Description |
+| ------ | ----------- | ----------- |
+| ```start=``` | '-infinity' | PostgreSQL datetimetz |
+| ```end=``` | 'infinity' | PostgreSQL datetimetz |
+| ```period=day / week / month``` | 'week' | string |
+| ```output=true``` | false | boolean. if true, will write results of the query to report.csv (refer to example.report.csv file) and the server will respond with empty rows |
+
+Example:
+```GET /api/v0/orders?start='2017-11-14 23:00:00-07'&end='2017-11-15 23:00:00-07'&period=month&output=true```
 
 ## TODO:
  - Error handling
