@@ -27,7 +27,7 @@ __Example Request:__
  ```GET /api/v0/customers/orders?customer_id=2```
 
 __Example Response:__
-Note: ```"count"``` is the number of orders for that category
+Note: ```"id"``` represents the primary key in the `orders` table (id of order)
 Note: ```"total_amount"``` doesn't add up in this example. (mock data is used)
  ```json
  [
