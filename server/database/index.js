@@ -11,7 +11,7 @@ client.connect();
 module.exports = {
   categories: {
     get: (cb, name = null) => {
-      let queryString = name === null ? `SELECT * FROM categories` : `SELECT * FROM categories WHERE id = ${name}`;
+      let queryString = `SELECT * FROM categories${name === null ? ``: ` WHERE id = ${name}`};`;
       console.log(queryString);
         client.query(queryString, (err, res) => {
           // console.log(err ? err.stack : res);
@@ -111,7 +111,7 @@ module.exports = {
         `;
 
       console.log(`dirname is: ${__dirname}`);
-      csvOutput ? queryString = `COPY (${queryString}) TO '${__dirname}/report.csv' CSV` : null;
+      // csvOutput ? queryString = `COPY (${queryString}) TO '${__dirname}/report.csv' CSV` : null;
 
       console.log(queryString);
 
