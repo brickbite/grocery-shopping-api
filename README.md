@@ -277,11 +277,12 @@ Note: ```"count"``` is the number of orders for that product
 ```
 
 ## TODO:
- - Error handling
- - Status codes in response
- - Other Routes
+ - Review design of existing routes
  - Write tests
  - Write script for testing
+ - Error handling
+ - Status codes in response
+ - Handle requests for other functions (insert, update, delete)
 
 ## Tech Stack:
  - Node.JS (with Express)
@@ -289,4 +290,4 @@ Note: ```"count"``` is the number of orders for that product
  - dotenv
 
 ## Notes/Comments:
- - [ comments here ]
+ - Structure was made for more routes, but not yet implemented
