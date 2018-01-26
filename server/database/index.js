@@ -37,7 +37,8 @@ module.exports = {
   customers: {
     getCustomerOrders: (cb, id = null) => {
       const queryString = `
-        SELECT orders.id,
+        SELECT
+          orders.id,
           orders.time_ordered,
           orders.total_amount,
           orders.currency,
@@ -62,6 +63,35 @@ module.exports = {
         cb(err, res);
       });
 
+    },
+    getCustomerOrdersByCategory: (cb, id = null) => {
+      const queryString = `
+        SELECT
+          orders.id_customers, customers.first_name,
+          products_categories.id_categories, categories.category_name,
+          COUNT(categories.id)
+        FROM orders
+        LEFT OUTER JOIN customers
+          ON customers.id = orders.id_customers
+        LEFT OUTER JOIN orders_products
+          ON orders.id = orders_products.id_orders
+        LEFT OUTER JOIN products
+          ON products.id = orders_products.id_products
+        LEFT OUTER JOIN products_categories
+          ON products.id = products_categories.id_products
+        LEFT OUTER JOIN categories
+          ON categories.id = products_categories.id_categories
+        GROUP BY orders.id_customers, customers.first_name,
+          products_categories.id_categories, categories.category_name
+        ORDER BY orders.id_customers;
+        ${id === null ? `` : `WHERE orders.id_customers = ${id}`};
+        `;
+
+      client.query(queryString, (err, res) => {
+        console.log(err ? err.stack : res);
+        cb(err, res);
+      });
+
     }
   },
   orders: {
@@ -73,7 +103,8 @@ module.exports = {
       };
 
       const queryString = `
-        SELECT TO_CHAR(orders.time_ordered, '${timeOptions[timePeriod]}'),
+        SELECT
+          TO_CHAR(orders.time_ordered, '${timeOptions[timePeriod]}'),
           products.product_name,
           COUNT(TO_CHAR(orders.time_ordered, '${timeOptions[timePeriod]}'))
         FROM orders
