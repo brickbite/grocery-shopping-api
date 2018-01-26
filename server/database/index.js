@@ -35,9 +35,27 @@ module.exports = {
 
   },
   customers: {
-    getCustomerOrders: (cb, id) => {
-      const queryString = `SELECT * FROM orders WHERE id_customers = ${id}`;
-      console.log(queryString);
+    getCustomerOrders: (cb, id = null) => {
+      const queryString = `
+        SELECT orders.id,
+          orders.time_ordered,
+          orders.total_amount,
+          orders.currency,
+          orders.order_status,
+          orders_products.order_quantity,
+          orders_products.unit_price,
+          orders_products.unit_measure,
+          orders_products.currency,
+          products.product_name
+        FROM orders
+        LEFT OUTER JOIN customers
+          ON orders.id_customers = customers.id
+        LEFT OUTER JOIN orders_products
+          ON orders_products.id_orders = orders.id
+        LEFT OUTER JOIN products
+          ON products.id = orders_products.id_products
+        ${id === null ? `` : `WHERE orders.id_customers = ${id}`};
+        `;
 
       client.query(queryString, (err, res) => {
         console.log(err ? err.stack : res);
@@ -47,8 +65,31 @@ module.exports = {
     }
   },
   orders: {
-    getOrdersByTime: (cb, id) => {
-      // TODO: const queryString = `SELECT * FROM orders WHERE id_customers = ${id}`; 
+    getOrdersByTime: (cb, start = '-infinity', end = 'infinity', timePeriod = 'week', csvOutput = false) => {
+      timeOptions = {
+        day: 'YYYY MM DD',
+        week: 'YYYY WW',
+        month: 'YYYY MM'
+      };
+
+      const queryString = `
+        SELECT TO_CHAR(orders.time_ordered, '${timeOptions[timePeriod]}'),
+          products.product_name,
+          COUNT(TO_CHAR(orders.time_ordered, '${timeOptions[timePeriod]}'))
+        FROM orders
+        LEFT OUTER JOIN orders_products
+          ON orders.id = orders_products.id_orders
+        LEFT OUTER JOIN products
+          ON orders_products.id_products = products.id
+        WHERE orders.time_ordered BETWEEN '${start}' AND '${end}'
+        GROUP BY TO_CHAR(time_ordered, '${timeOptions[timePeriod]}'),
+          products.product_name
+        ORDER BY TO_CHAR(time_ordered, '${timeOptions[timePeriod]}');
+        `;
+
+      console.log(`dirname is: ${__dirname}`);
+      // csvOutput ? queryString = `COPY (${queryString}) TO '${__dirname}/report.csv' CSV` : null;
+
       console.log(queryString);
 
       client.query(queryString, (err, res) => {
