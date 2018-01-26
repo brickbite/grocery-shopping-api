@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server/index.js",
+    "dbreset": "psql -d groceryapi -a -f database/setup.sql",
     "seed": "node database/seed.js"
   },
   "dependencies": {
