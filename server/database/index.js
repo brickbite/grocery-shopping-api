@@ -107,11 +107,10 @@ module.exports = {
         WHERE orders.time_ordered BETWEEN ${start} AND ${end}
         GROUP BY TO_CHAR(time_ordered, '${timeOptions[timePeriod]}'),
           products.product_name
-        ORDER BY TO_CHAR(time_ordered, '${timeOptions[timePeriod]}');
+        ORDER BY TO_CHAR(time_ordered, '${timeOptions[timePeriod]}')
         `;
 
-      console.log(`dirname is: ${__dirname}`);
-      // csvOutput ? queryString = `COPY (${queryString}) TO '${__dirname}/report.csv' CSV` : null;
+      csvOutput ? queryString = `COPY (${queryString}) TO '${__dirname}/report.csv' CSV;` : queryString += `;`;
 
       console.log(queryString);
 
