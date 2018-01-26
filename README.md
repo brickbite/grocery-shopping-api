@@ -1,4 +1,5 @@
 # grocery-shopping-api
+API for tracking products, categories, customers, and their orders
 
 ## API Features:
  - Report of orders with breakdown of products
@@ -291,3 +292,5 @@ Note: ```"count"``` is the number of orders for that product
 
 ## Notes/Comments:
  - Structure was made for more routes, but not yet implemented
+ - ```orders``` table keeps track of the order total, in case any discount or credit was applied. order totals do not add up in the mock data used.
+ - ```orders_products``` table keeps track of the price at the time of order, for keeping a history when the product price changes.
