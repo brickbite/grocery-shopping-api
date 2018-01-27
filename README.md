@@ -278,7 +278,8 @@ Note: ```"count"``` is the number of orders for that product
 ```
 
 ## TODO:
- - Review design of existing routes
+ - Review design/organization of existing routes
+ - Change queries to parameterized queries
  - Write tests
  - Write script for testing
  - Error handling
